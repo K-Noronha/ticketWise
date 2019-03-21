@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "ticketWise_db",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
