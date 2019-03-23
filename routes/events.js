@@ -1,5 +1,5 @@
-const router = require("express").Router();
-const db = require("../models");
+const router = require("express").Router(),
+      db = require("../models"),
       Sequelize = require("sequelize"),
       Op = Sequelize.Op,
       moment = require("moment");
@@ -14,7 +14,7 @@ function todayDate() {
 
 
 router.get("/all", (req,res)=>{
-todayDate();
+    todayDate();
     db.event.findAll(
         {
             where: {
@@ -59,7 +59,7 @@ router.get("/category/:categ", (req, res)=>{
 
 router.get("/:id", (req, res)=>{
     let eventId=req.params.id;
-    db.event.findAll(
+    db.event.findOne(
         {
             where: {
                id: {

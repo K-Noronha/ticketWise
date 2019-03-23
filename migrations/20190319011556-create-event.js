@@ -25,7 +25,7 @@ module.exports = {
         allowNull:false
       },
       eDate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull:false
       },
       category: {
@@ -33,7 +33,7 @@ module.exports = {
         allowNull:false
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1234),
         allowNull:false
       },
       ages: {
