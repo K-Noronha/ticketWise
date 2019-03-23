@@ -26,18 +26,17 @@ router.post("/check", (req, res)=>{
             }
         }
     )
-        .then(user=>{
-            if (user){
-                delete user.dataValues.password;
-                res.json(user)
-            } else {
-                res.send(false)
-            }
-            
-        })
-        .catch(err => {
-            res.status(500).json(err);
-        })
+    .then(user=>{
+        if (user){
+            delete user.dataValues.password;
+            res.json(user)
+        } else {
+            res.send(false)
+        }    
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    })
 })
 
 module.exports = router;
