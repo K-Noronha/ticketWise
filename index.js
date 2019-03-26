@@ -12,6 +12,7 @@
                         
 // const db = require("./models");
 
+app.use('/images', express.static('uploads'));
 app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

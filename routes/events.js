@@ -2,8 +2,19 @@ const router = require("express").Router(),
       db = require("../models"),
       Sequelize = require("sequelize"),
       Op = Sequelize.Op,
-      moment = require("moment");
+      multer = require("multer"),
+      path = require("path");
 let now;
+
+const storage = multer.diskStorage({
+    destination: './uploads/',
+    filename: (req, file, callback) => {
+        callback(null, `${file.fieldname}-${Date.now()}-${path.extname(file.originalname)}`);
+    }
+});
+
+const uploadMiddleware = multer({ storage }).single('poster');
+
 
 function todayDate() {
     now = new Date();
@@ -42,7 +53,7 @@ router.get("/category/:categ", (req, res)=>{
                 eDate: {
                      [Op.gte] : now
                  },
-                 category
+                 category 
              },
              order: [["eDate", "ASC"]]
             
@@ -78,14 +89,18 @@ router.get("/:id", (req, res)=>{
 
 })
 
-router.post("/new", (req, res)=>{
+router.post("/new",uploadMiddleware, (req, res)=>{
     const data = req.body;
-
+    data.poster = `http://localhost:8080/images/${req.file.filename}`;
     db.event.create(data)
         .then(saved=>{
+            console.log("nsdbafnmdbsdanmf>>>>>>>>")
+            console.log(saved);
             res.json(saved)
+            
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json(err);
         })
 })
