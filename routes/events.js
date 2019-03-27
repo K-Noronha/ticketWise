@@ -80,7 +80,6 @@ router.get("/:id", (req, res)=>{
         }
     )
         .then(event => {
-            console.log(event)
             res.json(event)
         })
         .catch(err=>{
@@ -94,10 +93,7 @@ router.post("/new",uploadMiddleware, (req, res)=>{
     data.poster = `http://localhost:8080/images/${req.file.filename}`;
     db.event.create(data)
         .then(saved=>{
-            console.log("nsdbafnmdbsdanmf>>>>>>>>")
-            console.log(saved);
-            res.json(saved)
-            
+            res.json(saved)  
         })
         .catch(err => {
             console.log(err)
