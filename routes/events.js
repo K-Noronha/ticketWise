@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 
 const uploadMiddleware = multer({ storage }).single('poster');
 
-
+//gets todays date, corrects for UTC times 
 function todayDate() {
     now = new Date();
     now.setUTCHours(0);
@@ -23,7 +23,7 @@ function todayDate() {
     now.setUTCSeconds(0);
 }
 
-
+//gets all events from today onwards and orders them in asc
 router.get("/all", (req,res)=>{
     todayDate();
     db.event.findAll(
@@ -44,6 +44,7 @@ router.get("/all", (req,res)=>{
         })
 })
 
+//gets all events today onwards of a category 
 router.get("/category/:categ", (req, res)=>{
     let category=req.params.categ;
     todayDate();
@@ -68,6 +69,7 @@ router.get("/category/:categ", (req, res)=>{
 
 })
 
+//gets the single corresponing event
 router.get("/:id", (req, res)=>{
     let eventId=req.params.id;
     db.event.findOne(
@@ -88,6 +90,7 @@ router.get("/:id", (req, res)=>{
 
 })
 
+//uploads the new event and takes care of the image upload
 router.post("/new",uploadMiddleware, (req, res)=>{
     const data = req.body;
     data.poster = `http://localhost:8080/images/${req.file.filename}`;

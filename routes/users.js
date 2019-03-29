@@ -1,7 +1,7 @@
 const router = require("express").Router(),
       db = require("../models");
 
-
+//creates a new user and removes the password before sending the result back
 router.post("/new", (req, res)=>{
     const data = req.body;
 
@@ -15,6 +15,7 @@ router.post("/new", (req, res)=>{
         })
 })
 
+//confirms the users credentials
 router.post("/check", (req, res)=>{
     const {username, password} = {...req.body};
 
