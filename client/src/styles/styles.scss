@@ -1,0 +1,265 @@
+@import "./variables.scss";
+@import "./font.scss";
+
+.nav{
+    padding: 1rem 10%;
+    display: flex;
+    justify-content: space-between;
+    background: black;
+    &__img{
+        width: 150px;
+        height: 50px;
+        object-fit: cover;
+    }
+
+    &__links{
+        display: flex;
+        align-items: center;
+        color: antiquewhite;
+        
+        & h4 {
+            margin: 0 1rem;
+            &:hover{
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.footer{
+    background: black;
+    height: 100px;
+}
+
+.card{
+    position: relative;
+    z-index: 3;
+    width: 260px;
+    height: 300px;
+    margin: 3rem;
+    border-radius: 10px;
+    
+    &:hover{
+        .card__details{
+            display:none;
+        }
+    }
+
+    &__poster{
+        width: 260px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        border-radius: 10px;
+        border: thick solid rgba(36, 111, 197,0);
+    }
+
+    &__details{
+        animation: move 1s ease-in-out;
+        width: 260px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 3;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color:white;
+        background: rgba($color: #000000, $alpha: 0.9);
+        border-radius: 10px;
+        border: thick solid rgb(36, 111, 197);
+        box-shadow: 10px 10px 20px rgba(0, 0,0, 0.7);
+        
+        &>p{
+         
+            margin: 0;
+            text-shadow: 3px 3px 10px #000000;
+        }
+        &>h2{
+            border-bottom: 3px solid white;
+            text-shadow: 3px 3px 10px #000000;
+        }
+    }
+}
+
+.events{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding:5% 7% 7%;
+
+  //  background-image: url("../assets/background1.jpg");
+    background-size: cover;
+    min-height: 50vh;    
+}
+
+.categories{
+    padding: 1rem 20% 0;
+    display: flex;
+    justify-content: space-around;
+    background-image: linear-gradient(to bottom, black, white);
+    &__choice {
+        padding: 0.75rem 1.5rem;
+        background-color: #5870DF;
+        color: antiquewhite;
+        border-radius: 5px;
+        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.50);
+            
+        &:hover{
+            background-color: darkblue;
+        }
+    }
+}
+
+.login{
+    display: flex;
+    align-items: center;
+ 
+    &--tab{
+        margin: 2rem;
+        padding: 1rem;
+        border: thin solid black;
+        border-radius: 10px;
+    }
+}
+
+.uploadEvent{
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+
+    &__button{
+        margin: 1rem 0 3rem 60%;
+    }
+}
+
+.popup {
+    @include popup();
+    &--form{
+      @include innerPopUp();
+    }
+}
+
+.form--upload{
+    display: flex;
+    flex-wrap: wrap; 
+    width: 70%;
+}
+
+.form {
+    &--div{
+        margin: 1rem 2rem 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 310px;
+        & > input[type=file] {
+            padding-top: 0.5rem;
+            border: none;
+        }
+        & > input[type=date] {
+            font: inherit;
+        }
+
+    }
+
+    &--buttons{
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;    
+    }
+    
+}
+
+.ownLine{
+    margin-right: 70%;
+}
+
+.ticketBtn{
+    position: fixed;
+    bottom: 15vh;
+    right: 8vw;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 10px 10px 20px rgba(0, 0,0, 0.7);
+    &>img{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.allTickets{
+    @include popup();
+   
+   &__div{
+       @include innerPopUp();
+   }
+
+   &__btn{
+       margin-top: 2rem;
+   }
+
+}
+
+.ticket{
+    display: flex;
+    border-bottom: thin solid silver;
+    padding: 1rem;
+    
+    &__div{
+        display: flex;
+        width: 400px;
+        height: 200px;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    &__text{
+        padding-left: 2rem;
+    }
+    &__img{
+        width: 100px;
+        height: 150px;
+    }
+}
+
+.eventPg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__img{
+        padding: 5rem 8rem 5rem 0;
+        width: 400px;
+        height: 500px;
+    }
+}
+
+.eventSuccess{
+    @include popup();
+    &__div{
+        @include innerPopUp();
+        & > * {
+            text-align: center;
+        }
+    }
+}
+
+.noTickets{
+    @include popup();
+    &__div{
+        @include innerPopUp();
+    }
+}
+
+.boughtTicket{
+    @include popup();
+    &__div{
+        @include innerPopUp();
+    }
+}
